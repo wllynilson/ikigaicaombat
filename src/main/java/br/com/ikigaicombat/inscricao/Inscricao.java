@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.UUID;
@@ -25,5 +26,6 @@ public class Inscricao {
     private String telefone;
     private String email;
     private String equipe;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date dataCadastro;
 }

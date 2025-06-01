@@ -1,0 +1,11 @@
+O arquivo `Dockerfile` possui alguns pontos de melhoria e possíveis problemas:
+
+1. O comando `COPY . .` (linha 5) copia tudo do contexto de build, incluindo diretórios e arquivos desnecessários (como `target/`), o que pode aumentar o tamanho da imagem e causar conflitos.
+2. O Maven é instalado após o `COPY . .`, então qualquer alteração no código-fonte invalida o cache do Docker, tornando o build mais lento.
+3. O caminho do JAR na linha 14 (`/target/ikigaicombat-1.0.0.jar`) pode estar incorreto, pois o Maven normalmente gera o JAR em `/build/target` dentro do container, dependendo do diretório de trabalho.
+4. Não há definição explícita do diretório de trabalho (`WORKDIR`), o que pode causar problemas de contexto.
+5. O uso de duas imagens base diferentes (`ubuntu:latest` e `openjdk:17-jdk-slim`) é correto para multi-stage build, mas pode ser otimizado usando uma imagem Maven oficial.
+6. O `apt-get install` não utiliza `--no-install-recommends`, o que pode instalar pacotes desnecessários.
+7. Não há limpeza do cache do `apt` após a instalação, aumentando o tamanho da imagem.
+
+Sugestão: use a imagem oficial do Maven para o build e otimize o contexto de cópia.

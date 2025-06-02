@@ -6,9 +6,10 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity(name="inscricoes")
@@ -19,6 +20,7 @@ public class Inscricao {
 
     @Id
     @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;
     private String nome;
     private String sobrenome;
@@ -27,5 +29,5 @@ public class Inscricao {
     private String email;
     private String equipe;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private Date dataCadastro;
+    private LocalDateTime dataCadastro;
 }

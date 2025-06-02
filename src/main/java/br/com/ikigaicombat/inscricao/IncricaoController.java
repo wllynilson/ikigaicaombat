@@ -7,10 +7,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/inscricao")
-@CrossOrigin(origins = "http://localhost:63342")
+//@CrossOrigin(origins = "http://localhost:63342")
 public class IncricaoController {
 
-    @Autowired
+    @Autowired(required = true)
     private InscricaoRepository inscricaoRepository;
 
     @GetMapping("/")

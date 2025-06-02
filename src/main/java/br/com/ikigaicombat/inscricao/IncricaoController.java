@@ -9,8 +9,11 @@ import java.util.List;
 @RequestMapping("/inscricao")
 public class IncricaoController {
 
-    @Autowired(required = true)
-    private InscricaoRepository inscricaoRepository;
+    private final InscricaoRepository inscricaoRepository;
+
+    public IncricaoController(InscricaoRepository inscricaoRepository) {
+        this.inscricaoRepository = inscricaoRepository;
+    }
 
     @GetMapping("/")
     public List<Inscricao> list() {

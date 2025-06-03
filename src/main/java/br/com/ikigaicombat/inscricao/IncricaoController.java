@@ -1,6 +1,7 @@
 package br.com.ikigaicombat.inscricao;
 
 import org.springframework.web.bind.annotation.*;
+import br.com.ikigaicombat.inscricao.InscricaoRepository;
 
 import java.util.List;
 

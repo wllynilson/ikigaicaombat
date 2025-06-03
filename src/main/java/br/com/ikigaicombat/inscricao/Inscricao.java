@@ -12,7 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity(name="inscricoes")
+@Entity(name = "inscricao")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,12 +22,19 @@ public class Inscricao {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;
+
     private String nome;
+
     private String sobrenome;
+
     private String cpf;
+
     private String telefone;
+
     private String email;
+
     private String equipe;
+
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private LocalDateTime dataCadastro;
+    private LocalDateTime dataCadastro = LocalDateTime.now();
 }
